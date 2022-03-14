@@ -1,0 +1,434 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    margin: 0;
+    padding: 0;
+}
+html{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+
+header nav ul{
+background-color: #AEB8AE;
+}
+
+footer nav ul{
+    background-color: white;
+}
+
+
+
+
+section#admin{
+    display: flex;
+    gap : 120px;
+    flex-direction: row;
+    justify-content: center;
+    height: 50px;
+    justify-items: center;
+}
+
+li#menu1{
+    margin-top: 15px;
+}
+
+
+header nav ul{
+    display: flex;
+    gap : 120px;
+    flex-direction: row;
+    justify-content: center;
+    height: 50px;
+    justify-items: center;
+  
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+
+li{
+    list-style: none;
+    text-decoration: none;
+  
+}
+
+li a{
+    margin-top: 10px;
+}
+
+a:hover {
+ color: black;
+ text-decoration: none;
+ font-family: 'Roboto Light', arial;
+ font-size: 1.2rem;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    font-family: 'Roboto Light', arial;
+}
+
+p{
+    font-family: 'Roboto Light', arial;   
+}
+
+
+
+
+ footer{
+margin-top: 300px;
+}
+
+footer nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+footer p {
+    flex: 1;
+}
+
+  
+footer nav{
+    flex: 2;
+   
+}
+
+footer li i {
+font-size: 1.2rem;
+}
+
+section#profil{
+    display: flex;
+    gap: 30px;
+  width: 50%;
+  margin: auto;
+}
+
+p#profil{
+    flex: 1;
+    font-family: 'Roboto Light', arial;
+    text-align: left;
+    width: 400px;
+    text-align: justify;
+ 
+}
+p#profil1{
+   font-family: 'Roboto Light', arial;
+    text-align: left;
+}
+
+img#profil{
+ 
+    width: 720px;
+    height: 500px;
+
+}
+
+
+img#logo{
+    margin-left: 550px;
+}
+p#logo{
+    margin-left: 620px;
+   
+    font-size: 1.7rem;
+    font-family: 'Roboto Light', arial;
+
+}
+
+
+ div#connexion{
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+    
+ }
+
+ h2{
+     margin: auto;
+ }
+
+ button{
+    margin-top: 10px;
+     background-color: #84947B;
+     width: 120px;
+     height: 40px;
+     color: white;
+   margin: auto;
+   margin-top: 10px;
+   font-family: 'Roboto Light', arial;
+ }
+ input{
+     height: 40px;
+ }
+
+form#apropos{
+    display: flex;
+ justify-content: center;
+justify-items: center;
+gap: 50px;
+
+margin-top: 60px;
+   
+}
+
+#images img{
+    height: 500px;
+}
+
+p#texteapropos{
+    width: 400px;
+    font-family: 'Roboto Light', arial;
+}
+
+
+ img#image1{
+     height: 500px;
+ }
+
+section#recette{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 300px;
+}
+
+
+input, textarea{
+    margin-top: 10px;
+}
+
+textarea{
+    height: 200px;
+}
+
+table{
+    margin-top: 100px;
+    border-collapse: collapse;
+  }
+  
+  td{
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+
+  .button#Ajout , .button#Contact{
+margin-top: 100px;
+  }
+
+  h2#admin{
+    font-family: 'Roboto Light', arial;
+    text-align: center;
+    margin-left: 400px;
+  }
+
+p#bonhour{
+    font-family: 'Roboto Light', arial;
+    
+}
+  p#text1{
+width: 50%;
+flex: 2;
+  }
+
+
+  div#contenuForm{
+      display: flex;
+      flex-direction: column;
+      margin-left: 200px;
+      width: 50%;
+  }
+
+  div#contenuForm1{
+    display: flex;
+    flex-direction: column;
+    margin-left: 370px;
+    width: 30%;
+}
+
+div#contenuForm2{
+    display: flex;
+    flex-direction: column;
+    margin-left: 370px;
+    width: 30%;
+}
+
+  div#contenuButton{
+      gap: 10px;
+      display: flex;
+      margin-left: 450px;
+      margin-top: 30px;
+    
+  }
+
+  form#contact{
+      margin-left: 200px;
+  }
+
+  div#contenuTable{
+      margin-right: 400px;
+  }
+
+  form#inscription{
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+ margin-left: 600px;
+
+  }
+
+
+ main#toto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+    gap: 10px;
+    margin-bottom: 60px;
+ }
+
+ main#connexion{
+     justify-content: center;
+     justify-items: center;
+     display: flex;
+     flex-direction: column;
+    width: 50%;
+padding: 20px;
+     margin: auto;
+ }
+
+ p#bienvenue{
+     text-align: center;
+ }
+ section#texteAccueil{
+     text-align: justify;
+ }
+
+ div#center{
+     display: flex;
+     gap:10px
+ }
+
+ section#left{
+     flex: 1;
+ }
+
+ section#right{
+     flex:3;
+     border: 1px solid black;
+     text-align: center;
+     justify-content: center;
+     justify-items: center;
+     padding-bottom: 5px;
+ }
+
+ article#one{
+     width: 10%;
+ }
+ article#oneone{
+    width: 80%;
+    text-align: justify;
+ justify-content: center;
+}
+
+ul#two{
+    display: flex;
+    gap: 50px;
+  margin: auto;
+  font-size: 1.5rem;
+}
+
+article#etoile{
+    
+    color: darkgoldenrod;
+    font-size: 1.2rem;
+}
+
+div#trait{
+    width: 20%;
+}
+
+img#imgLeft{
+    width: 300px;
+    height: 250px;
+}
+
+form#profil{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 30px ;
+   
+}
+
+i#profil{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+input#profil1{
+    border: none;
+}
+
+textarea#profil1{
+    width: 550px;
+    height: 100px;
+} 
+
+img#imgRight{
+    margin-top: 15px;
+    height: 470px;
+    width: 600px;
+}
+
+article#six{
+margin-left: 10px;
+}
+
+
+div#contenu1 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+}
+
+p#danger{
+  color: white;
+  background-color: black;
+  border: 1px black;
+  position: relative;
+  text-align: center;
+  width: 10%;
+  height: 50px;
+  margin: auto;
+  border-radius: 20px;
+  animation: bounce 0.7s ease infinite;
+}
+
+@keyframes bounce{
+    from {top: 106px;}
+    50%  {top: 86px;}
+    to   {top: 106px;}
+}
+
