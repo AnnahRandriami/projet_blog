@@ -14,7 +14,10 @@ html{
 }
 
 
-
+td#button{
+display: flex;
+flex-direction: row;
+}
 header nav ul{
 background-color: #AEB8AE;
 }
@@ -23,16 +26,13 @@ footer nav ul{
     background-color: white;
 }
 
-
-
-
 section#admin{
-    display: flex;
-    gap : 120px;
-    flex-direction: row;
-    justify-content: center;
-    height: 50px;
-    justify-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+justify-items: center;
+width: 50%;
+margin: auto;
 }
 
 li#menu1{
@@ -127,6 +127,7 @@ p#profil{
 p#profil1{
    font-family: 'Roboto Light', arial;
     text-align: left;
+    width: 10%;
 }
 
 img#profil{
@@ -135,6 +136,8 @@ img#profil{
     height: 500px;
 
 }
+
+
 
 
 img#logo{
@@ -219,6 +222,8 @@ textarea{
 table{
     margin-top: 100px;
     border-collapse: collapse;
+  
+   
   }
   
   td{
@@ -278,6 +283,11 @@ div#contenuForm2{
 
   form#contact{
       margin-left: 200px;
+  }
+
+  section#form{
+      display: flex;
+      flex-direction: row;
   }
 
   div#contenuTable{
@@ -432,3 +442,16 @@ p#danger{
     to   {top: 106px;}
 }
 
+p#profil2{
+  
+  width: 90%;
+  text-align: justify;
+margin: auto;
+}
+
+form#ajoutArticle{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}

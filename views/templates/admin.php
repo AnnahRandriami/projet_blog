@@ -1,25 +1,43 @@
-<?php include ('header.php');?>
+<?php include('header.php'); ?>
 <main>
- <form action="afficheAdmin" id=admin>
-                 <section id="admin">
-                   <div id="contenuAdmin">
-                   <h2 id=admin> Administration</h2>
-                   <button type="submit" action="AjouterArticle" class="btn btn-primary">Ajouter</button>
-                  <button type="submit" action="messageRecu" class="btn btn-primary">Contact</button>
-                   </div>
-         
-                     <table>
-                       <tr>
-                         <td name="idArticle">id</td>
-                         <td name="title">Titre</td>
-                         <td name="category">Catégorie</td>
-                         <td>Action
-                         <button type="submit" action="ModiferArticle" class="btn btn-primary">Modifier</button>
-                  <button type="submit" action="SupprimerArticle" class="btn btn-primary">Supprimer</button>
-                         </td>
-                     </table>
-         
-</form>
-</main>
-<?php include ('footer.php');?>
+  <section id="admin">
+    <div id="contenuAdmin">
+      <h2 id=admin> Administration</h2>
+      <form action="ajoutArticle">
+        <button type="submit" action="AjouterArticle">Ajouter</button>
+      </form>
+      <form action="messageRecu">
+        <button type="submit" action="messageRecu">Contact</button>
+      </form>
+    </div>
 
+
+    <table>
+      <tr>
+
+        <td name="idArticle">id</td>
+        <td name="title">Titre</td>
+        <td name="category">Catégorie</td>
+        <td>Action
+        </td>
+      </tr>
+      <?php foreach ($data_articles as $key => $value) : ?>
+        <tr>
+          <td name="idArticle"><?php echo $value['idArticle']; ?></td>
+          <td name="title"><?php echo $value['title']; ?></td>
+          <td name="category"><?php echo $value['category']; ?></td>
+          <td id="button">
+            </form>
+            <form action="modifArtcile">
+              <button type="submit" action="ModiferArticle" class="btn btn-primary">Modifier</button>
+            </form>
+            <form action="supprimerArticle">
+              <button type="submit" action="SupprimerArticle" class="btn btn-primary">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+      <?php endforeach ?>
+    </table>
+  </section>
+</main>
+<?php include('footer.php'); ?>
