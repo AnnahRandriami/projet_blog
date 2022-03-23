@@ -528,5 +528,16 @@ button:hover{
       display: flex;
    gap: 20px;
   }
+
+#contenuAdmin {
+    display: flex;
+    margin: auto;
+    gap: 10px;
+  }
+  
+ h2#admin{
+    margin: auto;
+   }
+   
   
   

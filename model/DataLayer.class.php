@@ -259,21 +259,27 @@ function modifierArticle($idCategorys){
     
 }
 
-function uptadeSet($idCategory, $title, $content, $images){
-    $sql = "UPDATE `article` SET `idCategory`=':idCAtegory',`title`=':title',`content`=':content',`images`=':images',`dateUptade`= NOW() WHERE idArticle = :idArticle";
-    try {
-        $result = $this->connexion->prepare($sql);
-        $result->execute(array(
-            ':idCategory' => $idCategory,
-            ':title' => $title,
-            ':idCategory' => $idCategory,
-            ':title' => $title,
-            ':content' => $content,
-            ':images' => $images,
-          
+    function uptadeSet($idArticle, $title, $content, $images, $idCategory)
+    {
+        $sql = "UPDATE article SET idCategory= :idCategory , title= :title , content= :content , images= :images , dateUptade = NOW() WHERE idArticle = :idArticle";
+     
+       // print_r([$idArticle, $title, $content, $images, $idCategory]); 
+       // print_r($sql);exit();
+        try {
+            $result = $this->connexion->prepare($sql);
+            $var = $result->execute(array(
+                ':idArticle' => $idArticle,
+                ':title' => $title,
+                ':content' => $content,
+                ':images' => $images,
+                ':idCategory' => $idCategory,
         ));
-        $dataUptades =  $result->fetchAll(PDO::FETCH_ASSOC);
-     return $dataUptades;
+        if ($var) {
+          //  print_r($var);exit();
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     } catch (PDOException $th) {
         return NULL;
     }
@@ -315,23 +321,24 @@ function uptadeSet($idCategory, $title, $content, $images){
     function modifArticles()
     {
         global $model;
-        $idUsers = $_REQUEST["idUsers"];
+        $idArticle = $_GET['idArticle'];
         $idCategory = $_REQUEST["idCategory"];
         $title = $_REQUEST["title"];
         $content = $_REQUEST["content"];
         $images = $_REQUEST["images"];
-      $me = $model->uptadeSet($idCategory, $title, $content, $images);
-     // print_r($me);
+        //print_r($_REQUEST);exit();
+     $model->uptadeSet($idArticle, $title, $content, $images, $idCategory);
+   
     }
 
     function ajoutArticle()
     {
         global $model;
         $idUsers = $_REQUEST["idUsers"];
-        $idCategory = $_REQUEST["idCategory"];
         $title = $_REQUEST["title"];
         $content = $_REQUEST["content"];
         $images = $_REQUEST["images"];
+        $idCategory = $_REQUEST["idCategory"];
    $model->createArticle($idUsers, $title, $content, $images, $idCategory);
      
     }

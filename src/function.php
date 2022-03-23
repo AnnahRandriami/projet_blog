@@ -86,12 +86,14 @@ switch ($action) {
         echo 'Votre message a été envoyé';
         require VIEWS . SP . "templates" . SP . "apropos.php";
         break;
+    case 'modifier':
+        global $model;
+        $model->modifArticles();
+        require VIEWS . SP . "templates" . SP . "apropos.php";
+        break;
 
-        case 'modifier':
-
-            
-            break;
-
+    case 'supprimer':
+        break;
     default:
         echo 'URL NON RECONNU';
         break;
