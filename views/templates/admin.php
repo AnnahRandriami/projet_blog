@@ -29,7 +29,7 @@
           <td id="button">
             </form>
             <form action="modifArtcile">
-              <button type="submit" action="ModiferArticle" class="btn btn-primary">Modifier</button>
+              <button type="submit" name ="idArtcileM" value ="<?php echo $value['idArticle'] ?>" action="ModiferArticle" class="btn btn-primary">Modifier</button>
             </form>
             <form action="supprimerArticle">
               <button type="submit" action="SupprimerArticle" class="btn btn-primary">Supprimer</button>

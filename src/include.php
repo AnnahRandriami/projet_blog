@@ -1,5 +1,4 @@
 <?php
-
 define("SRC" ,  dirname(__FILE__));
 define("ROOT" ,  dirname(SRC));
 define("SP" ,  DIRECTORY_SEPARATOR);
@@ -13,7 +12,7 @@ require CONFIG.SP."config.php";
 require MODEL.SP."DataLayer.class.php";
 $model = new DataLayer();
 
-//$var = $model->ajoutArticle();
-//print($var);exit();
+//$var = $model->createMessages('2', 'messages', 'email');
+//print_r($var);
 require "function.php";
 ?>

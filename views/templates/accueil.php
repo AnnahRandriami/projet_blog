@@ -67,7 +67,10 @@
                     <input id="profil1" type="text" name="category" value="<?php  echo $value['category']; ?>">
                 </article>
                 <article id="7">
-                    <p id=profil2>  <?php echo $value['content']; ?> </p>
+                    <textarea name="" id="" cols="79" rows="1">
+                  <?php echo $value['content']; ?> 
+                    </textarea>
+                   
                 </article>
                 <article id="8">
                     <button action="inscription" type="submit" class="btn btn-block btn-primary">Voir plus</button>

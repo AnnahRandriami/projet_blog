@@ -17,6 +17,7 @@
             <?php if (!isset($_SESSION["users"])) :   ?>
                 <li id="menu1"><a href="<?php echo 'connexion' ?>">CONNEXION</a></li>
             <?php endif; ?>
+            
             <?php if (isset($_SESSION["users"])) : ?>
                 <li id="menu1"><a href="<?php echo 'deconnexion' ?>">DECONNEXION</a></li>
             <?php endif; ?>

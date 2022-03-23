@@ -13,7 +13,7 @@
         <td name="Email">Email</td>
         <td name="Message">Message</td>
       </tr>
-      <?php foreach ($data_message as $key => $value) : ?>
+      <?php foreach ($data_messages as $key => $value) : ?>
         <tr>
           <td name="idArticle"><?php echo $value['idmessages']; ?></td>
           <td name="title"><?php echo $value['email']; ?></td>

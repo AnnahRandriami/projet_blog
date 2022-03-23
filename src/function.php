@@ -9,6 +9,7 @@ switch ($action) {
     case 'accueil':
         global $model;
         $data_article = $model->recettes();
+       // print_r($data_article);
         require VIEWS . SP . "templates" . SP . "accueil.php";
         break;
     case 'admin':
@@ -20,6 +21,7 @@ switch ($action) {
         require VIEWS . SP . "templates" . SP . "apropos.php";
         break;
     case 'contact':
+       
         require VIEWS . SP . "templates" . SP . "contact.php";
         break;
     case 'connexion':
@@ -27,14 +29,14 @@ switch ($action) {
         break;
     case 'deconnexion':
         $model->deconnexion();
-     
+        require VIEWS . SP . "templates" . SP . "apropos.php";
         break;
     case 'inscription':
         require VIEWS . SP . "templates" . SP . "inscription.php";
         break;
     case 'messageRecu':
         global $model;
-        $data_message = $model->message();
+        $data_messages = $model->message();
         require VIEWS . SP . "templates" . SP . "messageRecu.php";
         break;
     case 'recettes':
@@ -68,12 +70,28 @@ switch ($action) {
     case 'modifArtcile':
         $data_category = $model->category();
         $data_auteur = $model->auteur();
+        $hello = $model->afficherModif();
         require VIEWS . SP . "templates" . SP . "modifArticle.php";
         break;
-        case 'ValiderAjout':
-            $model->ajoutArticle();
-            require VIEWS . SP . "templates" . SP . "recettes.php";
+    case 'ModifierArticle':
+        break;
+    case 'ValiderAjout':
+        $model->ajoutArticle();
+        require VIEWS . SP . "templates" . SP . "recette.php";
+        break;
+
+    case 'EnvoyerMessage':
+        global $model;
+        $model->addMessage();
+        echo 'Votre message a été envoyé';
+        require VIEWS . SP . "templates" . SP . "apropos.php";
+        break;
+
+        case 'modifier':
+
+            
             break;
+
     default:
         echo 'URL NON RECONNU';
         break;

@@ -132,11 +132,10 @@ function verifArticle($title)
  }
   }
 
-
   /************************category******************* */
 
   function category(){
-      $sql= " SELECT category FROM category";
+      $sql= " SELECT * FROM category";
       try {
         $result = $this->connexion->prepare($sql);
         $result->execute();
@@ -146,6 +145,7 @@ function verifArticle($title)
          return FALSE;
      }
   }
+
 /************************ inner join auteur ************************* */
   function auteur(){
       $sql = "SELECT DISTINCT lastname FROM article INNER JOIN users WHERE article.idUsers = users.idUsers " ; 
@@ -174,18 +174,18 @@ try {
 }
  /**************inner join article pour message*********************** */
  function message(){
-    $sql = "SELECT idmessages, email , messages FROM messages INNER JOIN users WHERE messages.idUsers = users.idUsers ORDER BY idmessages ASC ";
+    $sql = "SELECT * FROM messages";
 try {
     $result = $this->connexion->prepare($sql);
     $result->execute();
-  $data_message =  $result->fetchAll(PDO::FETCH_ASSOC);
-  return $data_message;
+  $data_messages =  $result->fetchAll(PDO::FETCH_ASSOC);
+  return $data_messages;
 } catch (\Throwable $th) {
     //throw $th;
 }
 }
 
-/**************UPTADE article *********************** */
+/**************select article *********************** */
 function crudArticle(){
     $sql = "SELECT idmessages, email , messages FROM messages INNER JOIN users WHERE messages.idUsers = users.idUsers ORDER BY idmessages ASC ";
 try {
@@ -197,11 +197,11 @@ try {
     //throw $th;
 }
 }
-
-function createArticle($idUsers, $idCategory, $title, $content, $images)
+/*********************insert article************************** */
+function createArticle($idUsers, $title, $content, $images, $idCategory)
 {
-    $sql = "INSERT INTO `article` (idUsers, idCategory, title, content, images) 
-    VALUES ( :idUsers, :idCategory, :title, :content, :images)";
+    $sql = "INSERT INTO `article` (idUsers, title, content, images, idCategory) 
+    VALUES ( :idUsers, :title, :content, :images, :idCategory)";
    // print_r($sql);exit();
     try {
         $result = $this->connexion->prepare($sql);
@@ -221,56 +221,158 @@ function createArticle($idUsers, $idCategory, $title, $content, $images)
         return NULL;
     }
 }
+/************************insert message**************************** */
+function createMessages($idUsers, $messages, $email)
+{
+    $sql = "INSERT INTO `messages` (idUsers, messages, email) 
+    VALUES ( :idUsers, :messages, :email)";
+    try {
+        $result = $this->connexion->prepare($sql);
+        $var =  $result->execute(array(
+            ':idUsers' => $idUsers,
+            ':messages' => $messages,
+            ':email' => $email,
+        ));
+        if ($var) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    } catch (PDOException $th) {
+        return NULL;
+    }
+}
+
+/******************affiche uptade article************************ */
+function modifierArticle($idCategorys){
+    $sql = "SELECT * FROM article WHERE idArticle = :idCategorys";
+    try {
+        $result = $this->connexion->prepare($sql);
+        $result->execute(array(
+            ':idCategorys' => $idCategorys,
+        ));
+        $dataArticles =  $result->fetchAll(PDO::FETCH_ASSOC);
+     return $dataArticles;
+    } catch (PDOException $th) {
+        return NULL;
+    }
+    
+}
+
+function uptadeSet($idCategory, $title, $content, $images){
+    $sql = "UPDATE `article` SET `idCategory`=':idCAtegory',`title`=':title',`content`=':content',`images`=':images',`dateUptade`= NOW() WHERE idArticle = :idArticle";
+    try {
+        $result = $this->connexion->prepare($sql);
+        $result->execute(array(
+            ':idCategory' => $idCategory,
+            ':title' => $title,
+            ':idCategory' => $idCategory,
+            ':title' => $title,
+            ':content' => $content,
+            ':images' => $images,
+          
+        ));
+        $dataUptades =  $result->fetchAll(PDO::FETCH_ASSOC);
+     return $dataUptades;
+    } catch (PDOException $th) {
+        return NULL;
+    }
+}
 /*************************************FONCTION *******************************************/
-       
-        function login()
-        {
-            global $model;
-            $email = $_REQUEST["email"];
-            $passwords = $_REQUEST["passwords"];
-            $model->authentifier($email, $passwords);
-        }
+
+    function login()
+    {
+        global $model;
+        $email = $_REQUEST["email"];
+        $passwords = $_REQUEST["passwords"];
+        $model->authentifier($email, $passwords);
+    }
 
 
-        function inscrire()
-        {
-            global $model;
-            // print_r($_REQUEST); exit();
-            $firstname = $_REQUEST["firstname"];
-            $lastname = $_REQUEST["lastname"];
-            $pseudo = $_REQUEST["pseudo"];
-            $email = $_REQUEST["email"];
-            $passwords = $_REQUEST["passwords"];
-           $data = $model->verifEmail($email);
-           if ($data){
-               $data_users = $model->createUsers($lastname, $firstname, $pseudo, $email, $passwords);
-               if (!$data_users == $data) {
+    function inscrire()
+    {
+        global $model;
+        // print_r($_REQUEST); exit();
+        $firstname = $_REQUEST["firstname"];
+        $lastname = $_REQUEST["lastname"];
+        $pseudo = $_REQUEST["pseudo"];
+        $email = $_REQUEST["email"];
+        $passwords = $_REQUEST["passwords"];
+        $data = $model->verifEmail($email);
+        if ($data) {
+            $data_users = $model->createUsers($lastname, $firstname, $pseudo, $email, $passwords);
+            if (!$data_users == $data) {
                 require VIEWS . SP . "templates" . SP . "inscription.php";
-               }else{
-                 $model->getSess($email);
-              echo'<main> <p id="danger"> Bienvenue '.$lastname.' </p> </main>';
-               }
-           }
+            } else {
+                $model->getSess($email);
+                echo '<main> <p id="danger"> Bienvenue ' . $lastname . ' </p> </main>';
+            }
         }
+    }
 
 
 
-        function ajoutArticle()
-        {
-            global $model;
+    function modifArticles()
+    {
+        global $model;
         $idUsers = $_REQUEST["idUsers"];
         $idCategory = $_REQUEST["idCategory"];
         $title = $_REQUEST["title"];
         $content = $_REQUEST["content"];
         $images = $_REQUEST["images"];
-        $model->createArticle($idUsers, $idCategory, $title, $content, $images);
-        echo '<main> <p id="danger"> Ajout ' . $title . 'réussi </p> </main>';
+      $me = $model->uptadeSet($idCategory, $title, $content, $images);
+     // print_r($me);
+    }
 
-        }
-        function Deconnexion(){
-          session_destroy();
-           echo '<p class="danger">Vous etes déconnecté</p>';
-           require VIEWS . SP . "templates" . SP . "recettes.php";  
-          }
+    function ajoutArticle()
+    {
+        global $model;
+        $idUsers = $_REQUEST["idUsers"];
+        $idCategory = $_REQUEST["idCategory"];
+        $title = $_REQUEST["title"];
+        $content = $_REQUEST["content"];
+        $images = $_REQUEST["images"];
+   $model->createArticle($idUsers, $title, $content, $images, $idCategory);
+     
+    }
+
+    function addMessage(){
+        global $model;
+        $idUsers = $_REQUEST["idUsers"];
+        $messages = $_REQUEST["messages"];
+        $email = $_REQUEST["email"];
+     $model->createMessages($idUsers, $messages, $email);
+     
+    }
+
+
+    function afficherModif()
+    {
+        global $model;
+        $idCategorys = $_REQUEST["idArtcileM"];
+        $hello = $model->modifierArticle($idCategorys);
+        //print_r($hello);
+        return $hello;
+    }
+
+
+
+    function Deconnexion()
+    {
+        session_destroy();
+        echo '<p class="danger">Vous etes déconnecté</p>';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
