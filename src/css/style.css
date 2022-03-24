@@ -13,10 +13,18 @@ html{
     height: 100vh;
 }
 
+#green{
+    background-color: green;
+}
+
+#red{
+    background-color: red;
+}
 
 td#button{
 display: flex;
 flex-direction: row;
+justify-content: center;
 }
 header nav ul{
 background-color: #AEB8AE;
@@ -175,6 +183,8 @@ p#logo{
  }
  input{
      height: 40px;
+     color: #84947B;
+     font-weight: bold;
  }
 
 form#apropos{
@@ -219,11 +229,12 @@ textarea{
     height: 200px;
 }
 
+#recettes{
+    border: none;
+}
+
 table{
-    margin-top: 100px;
-    border-collapse: collapse;
-  
-   
+    margin-top: 20px;
   }
   
   td{
@@ -396,22 +407,34 @@ i#profil{
 
 input#profil1{
     border: none;
+    margin: auto;
 }
 
 textarea#profil1{
     width: 550px;
-    height: 100px;
+    height: 90px;
     text-align: justify;
+    border: none;
 } 
 
 img#imgRight{
     margin-top: 15px;
-    height: 470px;
+    height: 970px;
     width: 600px;
+}
+img#imgRight1{
+    height: 300px;
+    width: 300px;
 }
 
 article#six{
-margin-left: 10px;
+width: 10%;
+display: flex;
+justify-content: center;
+justify-items: center;
+margin-left: 670px;
+margin-top: 20px;
+
 }
 
 
@@ -539,5 +562,53 @@ button:hover{
     margin: auto;
    }
    
+ 
+
+#troisrecent {
+    display: flex;
+    flex-direction: row;
+ width: 50%;
+ margin: auto;
+ justify-items: center;
+ justify-content: center;
+   
+   
+  }
+
+
+  #rec{
+      margin-bottom: 6px;
+      margin-left: 70px;
+  }
+
+
+  #five{
+     
+      display: flex;
+    flex-direction: column;
+   margin-left: 90px;
+
+
   
+  }
+
+ 
+  
+  input#petit{
+      width: 200px;
+      font-size: 0.8rem;
+      border: none;
+text-align: center;
+  }
+
+  textarea#piu{
+      height: 40px;
+      border: none;
+  }
+
+  #tata{
+      display: flex;
+      flex-direction: column;
+  }
+
   

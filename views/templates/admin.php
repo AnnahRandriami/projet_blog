@@ -30,10 +30,10 @@
           <td id="button">
             </form>
             <form action="modifArtcile">
-              <button type="submit" name ="idArtcileM" value ="<?php echo $value['idArticle'] ?>" action="ModiferArticle" class="btn btn-primary">Modifier</button>
+              <button id ="green" type="submit" name ="idArtcileM" value ="<?php echo $value['idArticle'] ?>" action="ModiferArticle">Modifier</button>
             </form>
-            <form action="supprimerArticle">
-              <button type="submit" name ="idArticleM" value ="<?php echo $value['idArticle'] ?>" action="SupprimerArticle" class="btn btn-primary">Supprimer</button>
+            <form action="supprimer?idArticleM=<?php echo $value['idArticle']  ?>">
+              <button id ="red" type="submit" name ="idArticleM" value ="<?php echo $value['idArticle'] ?>" >Supprimer</button>
             </form>
           </td>
         </tr>
@@ -44,7 +44,4 @@
 <?php include('footer.php'); ?>
 
 
-mettre $hello ici et mettre dans method du bouton 
-supprimer ensuite ajouter une requete delete dans supprimer
-j'ai deja le id à sodium_crypto_box_keypair_from_secretkey_and_publickeycréer un delete 
-when idArtoclle = dans l'url
+

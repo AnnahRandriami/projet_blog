@@ -145,8 +145,22 @@ function verifArticle($title)
          return FALSE;
      }
   }
-
+/********************select les trois derniers***************************** */
+function afficheRecent(){
+    $sql ="SELECT * FROM article ORDER BY DateUptade DESC LIMIT 3";
+    try {
+        $result = $this->connexion->prepare($sql);
+        $result->execute();
+      $dataRecent =  $result->fetchAll(PDO::FETCH_ASSOC);
+     // print_r($dataRecent);exit();
+      return $dataRecent;
+      
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+}
 /************************ inner join auteur ************************* */
+/*
   function auteur(){
       $sql = "SELECT DISTINCT lastname FROM article INNER JOIN users WHERE article.idUsers = users.idUsers " ; 
       try {
@@ -243,6 +257,25 @@ function createMessages($idUsers, $messages, $email)
     }
 }
 
+/******************delete article*********************** */
+function delete($idArticle){
+        $sql = "DELETE FROM `article` WHERE idArticle = :idArticle ";
+        //print_r($sql); exit();
+        try {
+            $result = $this->connexion->prepare($sql);
+            $var =  $result->execute(array(
+                ':idArticle' => $idArticle,
+               
+            ));
+            if ($var) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } catch (PDOException $th) {
+            return NULL;
+        } 
+}
 /******************affiche uptade article************************ */
 function modifierArticle($idCategorys){
     $sql = "SELECT * FROM article WHERE idArticle = :idCategorys";
@@ -343,6 +376,7 @@ function modifierArticle($idCategorys){
      
     }
 
+
     function addMessage(){
         global $model;
         $idUsers = $_REQUEST["idUsers"];
@@ -362,6 +396,13 @@ function modifierArticle($idCategorys){
         return $hello;
     }
 
+
+    function supprimer(){
+        global $model;
+        $idArticle = $_GET["idArticleM"];
+        $model->delete($idArticle);
+        //print_r($idArticle); exit();
+    }
 
 
     function Deconnexion()

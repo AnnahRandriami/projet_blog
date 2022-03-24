@@ -12,7 +12,7 @@ require CONFIG.SP."config.php";
 require MODEL.SP."DataLayer.class.php";
 $model = new DataLayer();
 
-//$var = $model->createMessages('2', 'messages', 'email');
+//$var = $model->afficheRecent();
 //print_r($var);
 require "function.php";
 ?>

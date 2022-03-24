@@ -15,6 +15,7 @@ switch ($action) {
     case 'admin':
         global $model;
         $data_articles = $model->articles();
+    
         require VIEWS . SP . "templates" . SP . "admin.php";
         break;
     case 'apropos':
@@ -71,6 +72,7 @@ switch ($action) {
         $data_category = $model->category();
         $data_auteur = $model->auteur();
         $hello = $model->afficherModif();
+     
         require VIEWS . SP . "templates" . SP . "modifArticle.php";
         break;
     case 'ModifierArticle':
@@ -93,6 +95,15 @@ switch ($action) {
         break;
 
     case 'supprimer':
+        global $model;
+        $model->supprimer();
+        break;
+
+    case 'VoirPlus':
+        global $model;
+        $dataRecent = $model->afficheRecent();
+        print_r($dataRecent);
+        require VIEWS . SP . "templates" . SP . "recette.php";
         break;
     default:
         echo 'URL NON RECONNU';
