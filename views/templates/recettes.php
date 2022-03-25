@@ -8,21 +8,22 @@
                 </article>
                 <article id="six">
                     <i id="profil" class="fa-solid fa-user"></i>
-                    <input id="profil1" type="text" name="lastname" value="<?php echo $value['lastname']; ?>">
-                    <input id="profil1" type="text" name="" value="<?php echo $value['dateCreated']; ?>">
-                    <input id="profil1" type="text" name="category" value="<?php echo $value['category']; ?>">
+                    <input id="profil1" type="text" value="<?php echo $value['lastname']; ?>">
+                    <input id="profil1" type="text" value="<?php echo $value['dateCreated']; ?>">
+                    <input id="profil1" type="text" value="<?php echo $value['category']; ?>">
                 </article>
                 <article id="7">
                     <textarea name="" id="recettes" cols="65" rows="20">   <?php echo $value['content']; ?>    </textarea>
                 </article>
     </form>
-    <article id="voirplus">
-        <form action="VoirPlus">
-            <button type="submit" class="btn btn-block btn-primary">Voir plus</button>
-        </form>
-        <form action="Commenter">
-            <button type="submit" class="btn btn-block btn-primary">Commenter</button>
-        </form>
+    <form action="VoirPlus">
+        <article id="voirplus">
+            <button type="submit" name="idArticle" value="<?php echo $value['idArticle'] ?>">Voir plus</button>
+    </form>
+  <form action="Commenter">
+        <button type="submit" class="btn btn-block btn-primary">Commenter</button>
+</article>
+    </form>
     </article>
 
 <?php endforeach;   ?>

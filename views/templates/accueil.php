@@ -14,75 +14,71 @@
 
     <div id="center">
 
-        <section id="left">
-            <article id="one">
-                <p>Bonjour</p>
-                <hr>
-            </article>
-            <article id="oneone">
-                <p>Lorem ipsum dolor sit amet quuntur nulla optio blanditiis delectus ex quod totam. Molestiae expedita quidem maxime optio quae ex temporibus sit, odio modi a quam, cum incidunt maiores iste at?</p>
-                <hr>
-
-            </article>
-            <article>
-                <nav id="two">
-                    <ul id="two">
-
-                        <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-pinterest"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
-                    </ul>
-                </nav>
-            </article>
-            <article id="etoile">
-                <p>__________<i class="fa-solid fa-star"></i>_________</p>
-            </article>
-            <p> Elu meilleur blog culinaire </p>
-
-
-            <article id="4">
-                <p>Ma dernière recette</p>
-                <img id="imgLeft" src="http://localhost/recette2/src/image/pasta.jpg" alt="">
-                <div id="description">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ipsum nam alias, perspiciatis saepe porro. Rerum, molestias quam dignissimos quas excepturi doloribus obcaecati illo ad nulla minima mollitia voluptatum consequatur.</p>
-                </div>
-                <form action="voirRecette">
-                    <button action="inscription" type="submit" class="btn btn-block btn-primary">Voir plus</button>
-                </form>
-            </article>
-        </section>
-
-        <form action="displayArticle()" id="profil" methode="post">
-       
-            <section id="right">
-           <?php foreach ($data_article as $key => $value) : ?>
-                <article id="5">
-                    <img id="imgRight" src="http://localhost/recette2/src/image/<?php echo $value['images']?>" alt="" id="accueil">
+        <form action="VoirPlus">
+            <section id="left">
+                <article id="one">
+                    <p>Bonjour</p>
+                    <hr>
                 </article>
-                <article id="6">
-                    <i id="profil" class="fa-solid fa-user"></i>
-                    <input id="profil1" type="text" name="lastname" value="<?php  echo $value['lastname']; ?>">
-                    <input id="profil1" type="text" name="" value="<?php  echo $value['dateCreated']; ?>">
-                    <input id="profil1" type="text" name="category" value="<?php  echo $value['category']; ?>">
+                <article id="oneone">
+                    <p>Lorem ipsum dolor sit amet quuntur nulla optio blanditiis delectus ex quod totam. Molestiae expedita quidem maxime optio quae ex temporibus sit, odio modi a quam, cum incidunt maiores iste at?</p>
+                    <hr>
                 </article>
-                <article id="7">
-                    <textarea name="" id="" cols="79" rows="1">
-                  <?php echo $value['content']; ?> 
-                    </textarea>
-                   
+                <article>
+                    <nav id="two">
+                        <ul id="two">
+                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-pinterest"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </nav>
                 </article>
-                <article id="8">
-                    <button action="inscription" type="submit" class="btn btn-block btn-primary">Voir plus</button>
+                <article id="etoile">
+                    <p>__________<i class="fa-solid fa-star"></i>_________</p>
                 </article>
-                <article id="9">
-                    <button action="commentaire" type="submit" class="btn btn-block btn-primary">Commenter</button>
+                <p> Elu meilleur blog culinaire </p>
+                <article id="4">
+                    <p>Ma dernière recette</p>
+                    <img id="imgLeft" src="http://localhost/recette2/src/image/pasta.jpg" alt="">
+                    <div id="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ipsum nam alias, perspiciatis saepe porro. Rerum, molestias quam dignissimos quas excepturi doloribus obcaecati illo ad nulla minima mollitia voluptatum consequatur.</p>
+                    </div>
+                 
         </form>
+        <form action="VoirPlus">
 
-        <?php endforeach;   ?>
+            <button type="submit" name="idArticle" value="<?php echo $value['idArticle'] ?>">Voir plus</button>
+        </form>
         </article>
         </section>
+
+
+        <form action="VoirPlus" method="post">
+            <section id="right">
+                <?php foreach ($data_article as $key => $value) : ?>
+                    <article id="5">
+                        <img id="imgRight" src="http://localhost/recette2/src/image/<?php echo $value['images'] ?>" alt="" id="accueil">
+                    </article>
+                    <article id="6">
+                        <i id="profil" class="fa-solid fa-user"></i>
+                        <input id="profil1" type="text" name="lastname" value="<?php echo $value['lastname']; ?>">
+                        <input id="profil1" type="text" name="" value="<?php echo $value['dateCreated']; ?>">
+                        <input id="profil1" type="text" name="category" value="<?php echo $value['category']; ?>">
+                    </article>
+                    <article id="7">
+                        <textarea name="" id="mi">
+                  <?php echo $value['content']; ?> 
+                    </textarea>
+                    </article>
+        </form>
+        <form action="VoirPlus">
+
+            <button type="submit" name="idArticle" value="<?php echo $value['idArticle'] ?>">Voir plus</button>
+        </form>
+    <?php endforeach;   ?>
+    </article>
+    </section>
     </div>
 
 </main>
-

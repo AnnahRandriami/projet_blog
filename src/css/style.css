@@ -353,7 +353,7 @@ padding: 20px;
 
  section#right{
      flex:3;
-     border: 1px solid black;
+    
      text-align: center;
      justify-content: center;
      justify-items: center;
@@ -401,39 +401,64 @@ form#profil{
 }
 
 i#profil{
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 1.2rem;
 }
 
+textarea#recettes{
+    height: 70px;
+    width: 500px;
+   
+}
+#inscri{
+    margin-left: 50px;
+   
+}
+textarea#mi{
+    border: none;
+    height: 70px;
+    width: 600px;
+}
+
+#toto > div:nth-child(1) {
+    border: 1px;
+   }
+   
 input#profil1{
     border: none;
+    font-size: 0.9rem;
+    margin: auto;
+    width: 140px;
     margin: auto;
 }
 
 textarea#profil1{
     width: 550px;
-    height: 90px;
+    margin-left: 60px;
+    height:50px;
     text-align: justify;
     border: none;
 } 
 
+img#imgRightR{
+    margin-top: 15px;
+    height: 750px;
+    width: 500px;
+}
 img#imgRight{
     margin-top: 15px;
-    height: 970px;
-    width: 600px;
+    height: 550px;
+    width: 500px;
 }
 img#imgRight1{
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
 }
 
 article#six{
-width: 10%;
 display: flex;
-justify-content: center;
-justify-items: center;
-margin-left: 670px;
-margin-top: 20px;
+width: 10px;
+margin-left: 550px;
 
 }
 
@@ -487,8 +512,9 @@ input#invisible {
 
 #voirplus{
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    width: 60%;
+    margin-left: 80px;
+   
 }
 
 textarea{
@@ -577,23 +603,17 @@ button:hover{
 
 
   #rec{
-      margin-bottom: 6px;
-      margin-left: 70px;
+      margin-bottom: 20px;
+      margin-left: 180px;
   }
-
 
   #five{
      
       display: flex;
     flex-direction: column;
    margin-left: 90px;
-
-
   
   }
-
- 
-  
   input#petit{
       width: 200px;
       font-size: 0.8rem;
@@ -611,4 +631,56 @@ text-align: center;
       flex-direction: column;
   }
 
-  
+  article#comments{
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+   margin: auto;
+    gap: 10px;
+  }
+
+  textarea#coms{
+      width: 50%;
+      height: 50px;
+  }
+
+  article#postComments{
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin: auto;
+  }
+
+
+
+  article#nb{
+   display:flex ;
+   flex-direction: row;
+   justify-content: center;
+   justify-items: center;
+   width: 50%;
+   margin: auto;
+  }
+
+  article#nb i{
+      margin-top: 24px;
+      flex: 1;
+  }
+
+  article#nb input{
+    flex: 10;
+    width: 20px;
+    border: none;
+}
+
+input#profil2{
+    font-size: 0.8rem;
+    width: 75px;
+    border: none;
+}
+input#profil3 , input#profil4{
+    font-size: 0.8rem;
+    width: 100px;
+    border: none;
+   
+}

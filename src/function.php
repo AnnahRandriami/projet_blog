@@ -2,6 +2,7 @@
 $url = trim($_SERVER['PATH_INFO']);   //les pages après le dossier
 $url = explode('/', $url);
 $action = $url[1];
+
 switch ($action) {
     case 'hello':
         require SRC . SP . "index.php";
@@ -9,8 +10,9 @@ switch ($action) {
     case 'accueil':
         global $model;
         $data_article = $model->recettes();
-       // print_r($data_article);
+    
         require VIEWS . SP . "templates" . SP . "accueil.php";
+      
         break;
     case 'admin':
         global $model;
@@ -30,7 +32,6 @@ switch ($action) {
         break;
     case 'deconnexion':
         $model->deconnexion();
-        require VIEWS . SP . "templates" . SP . "apropos.php";
         break;
     case 'inscription':
         require VIEWS . SP . "templates" . SP . "inscription.php";
@@ -43,6 +44,8 @@ switch ($action) {
     case 'recettes':
         global $model;
         $data_article = $model->recettes();
+        $data_articles = $model->articles();
+        //print_r($data_article);
         require VIEWS . SP . "templates" . SP . "recettes.php";
         break;
     case 'affciherConnexion':
@@ -65,7 +68,7 @@ switch ($action) {
         break;
     case 'ajoutArticle':
         $data_category = $model->category();
-        $data_auteur = $model->auteur();
+       $data_auteur = $model->auteur();
         require VIEWS . SP . "templates" . SP . "ajoutArticle.php";
         break;
     case 'modifArtcile':
@@ -102,7 +105,9 @@ switch ($action) {
     case 'VoirPlus':
         global $model;
         $dataRecent = $model->afficheRecent();
-        print_r($dataRecent);
+        $datarec = $model->comms();
+    //  print_r($datarec);
+        //print_r($dataRecent);
         require VIEWS . SP . "templates" . SP . "recette.php";
         break;
     default:

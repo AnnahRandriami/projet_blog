@@ -51,13 +51,15 @@ class DataLayer{
              // array_push($_SESSION, $data);
              $_SESSION['users'] = $data;
             $pass = $data['passwords'];
-            if (password_verify($passwords, $pass)) {
+            if (password_verify($passwords, $pass) == $data) {
 
-                echo'<p id="danger"> vous etes connecté </p>';
-              require VIEWS . SP . "templates" . SP . "recette.php";
+              
+             header('location:apropos');
+             echo'<p id="danger"> vous etes connecté </p>';
             } else {
+              
+                header('location:connexion');
                 echo '<p id="danger"> Vérifier vos identifiants </p>';
-                require VIEWS . SP . "templates" . SP . "connexion.php";
             }
         } catch (PDOException $th) {
             return NULL;
@@ -89,7 +91,7 @@ class DataLayer{
             $data = $result->fetch(PDO::FETCH_ASSOC);
             if ($data && ($data['email'] == $email)) {
                 echo ' <p id="danger"> Vérifier vos identifiants </p> </main>';
-                require VIEWS . SP . "templates" . SP . "inscription.php";
+                header('location:inscription');
             }else{
                 return TRUE;
             }
@@ -110,7 +112,7 @@ function verifArticle($title)
         $data = $result->fetch(PDO::FETCH_ASSOC);
         if ($data && ($data['title'] == $title)) {
             echo ' <p id="danger"> Vérifier vos identifiants </p> </main>';
-            require VIEWS . SP . "templates" . SP . "inscription.php";
+            header('location:inscription');
         }else{
             return TRUE;
         }
@@ -120,7 +122,7 @@ function verifArticle($title)
 }
  /*********inner join dans article******/
  function recettes(){
-     $sql = "SELECT lastname, title, content, images, dateCreated, dateUptade , category FROM article INNER JOIN users ON article.idUsers = users.idUsers INNER JOIN category ON article.idCategory = category.idCategory ";
+     $sql = "SELECT lastname, title, idArticle, content, images, dateCreated, dateUptade , category FROM article INNER JOIN users ON article.idUsers = users.idUsers INNER JOIN category ON article.idCategory = category.idCategory ";
   //print_r($sql);exit();
   try {
     $result = $this->connexion->prepare($sql);
@@ -132,6 +134,21 @@ function verifArticle($title)
  }
   }
 
+  /***************INNER JOIN COMMENTS******************************* */
+function afficheComments(){
+    $sql = "SELECT lastname, title, content, images, dateCreated, dateUptade, comments
+    FROM comments
+    INNER JOIN users ON comments.idUsers = users.idUsers 
+    INNER JOIN article ON comments.idArticle = article.idArticle ";
+     try {
+        $result = $this->connexion->prepare($sql);
+        $result->execute();
+      $dataComs =  $result->fetchAll(PDO::FETCH_ASSOC);
+      return $dataComs;
+      } catch (PDOException $th) {
+         return FALSE;
+     }
+}
   /************************category******************* */
 
   function category(){
@@ -160,7 +177,7 @@ function afficheRecent(){
     }
 }
 /************************ inner join auteur ************************* */
-/*
+
   function auteur(){
       $sql = "SELECT DISTINCT lastname FROM article INNER JOIN users WHERE article.idUsers = users.idUsers " ; 
       try {
@@ -175,9 +192,12 @@ function afficheRecent(){
 
  
   /**************inner join article pour artcile********************** */
-function articles(){
-    $sql = "SELECT idArticle, title, category FROM article INNER JOIN category WHERE article.idCategory = category.idCategory ";
+function articles($idArticle = NULL){
+    $sql = "SELECT * FROM article INNER JOIN category WHERE article.idCategory = category.idCategory ";
 try {
+   if(!is_null($idArticle)){
+       $sql .= 'AND idArticle = ' .$idArticle;
+   }
     $result = $this->connexion->prepare($sql);
     $result->execute();
   $data_articles =  $result->fetchAll(PDO::FETCH_ASSOC);
@@ -198,6 +218,7 @@ try {
     //throw $th;
 }
 }
+
 
 /**************select article *********************** */
 function crudArticle(){
@@ -286,6 +307,21 @@ function modifierArticle($idCategorys){
         ));
         $dataArticles =  $result->fetchAll(PDO::FETCH_ASSOC);
      return $dataArticles;
+    } catch (PDOException $th) {
+        return NULL;
+    }
+    
+}
+function comms(){
+    $sql = "SELECT lastname, title, idArticle, content, images, dateCreated, dateUptade , category FROM article INNER JOIN users ON article.idUsers = users.idUsers INNER JOIN category ON article.idCategory = category.idCategory WHERE article.idArticle = :idArticle";
+   
+    try {
+        $result = $this->connexion->prepare($sql);
+        $result->execute(array(
+            ':idArticle' => $_GET['idArticle'],
+        ));
+        $datarec =  $result->fetchAll(PDO::FETCH_ASSOC);
+     return $datarec;
     } catch (PDOException $th) {
         return NULL;
     }
@@ -408,7 +444,9 @@ function modifierArticle($idCategorys){
     function Deconnexion()
     {
         session_destroy();
+    
         echo '<p class="danger">Vous etes déconnecté</p>';
+        header('location: accueil');
     }
 
 
